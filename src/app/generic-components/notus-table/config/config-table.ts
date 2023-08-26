@@ -39,10 +39,10 @@ class ColumnTable {
 }
 
 class RowStateTable {
-    typeState:"bar"|"point";
+    typeState:"bar"|"point"|"arrow-up"|"arrow-down";
     color:string;
     percent:number|null;
-    constructor(typeState:"bar"|"point",
+    constructor(typeState:"bar"|"point"|"arrow-up"|"arrow-down",
                 color:string,
                 percent:number|null
                 ) {

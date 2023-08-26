@@ -8,7 +8,7 @@ import { ColorsRowStateOption, ColumnTable, ConfigTable, RowStateTable, RowTable
 export class TableComponent implements OnInit {
   
   // creacion de headers
-  headers=["Project JUAN","Budget","Status","Users","Completion"];
+  headers=["Project","Budget","Status","Users","Completion"];
   
   // creacion de row1
   row1column1=new ColumnTable("Argon Design System",true,"assets/img/bootstrap.jpg",null,null);
@@ -38,7 +38,7 @@ export class TableComponent implements OnInit {
   // creacion de row3
   row3column1=new ColumnTable("Black Dashboard Sketch",true,"assets/img/sketch.jpg",null,null);
   row3column2=new ColumnTable("$3,150 USD",undefined,null,null,null);
-  row3rowState=new RowStateTable("point",ColorsRowStateOption.delayed,null);
+  row3rowState=new RowStateTable("arrow-up",ColorsRowStateOption.delayed,null);
   row3column3=new ColumnTable("delayed",undefined,null,this.row3rowState,null);
   row3column4=new ColumnTable(null,undefined,null,null,["assets/img/team-1-800x800.jpg",
                                         "assets/img/team-2-800x800.jpg",
