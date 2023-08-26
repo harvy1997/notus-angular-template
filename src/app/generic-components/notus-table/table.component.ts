@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ColorsRowStateOption, ColumnTable, ConfigTable, RowStateTable, RowTable } from "./entitie/config-table";
+import { ColorsRowStateOption, ColumnTable, ConfigTable, RowStateTable, RowTable } from "./config/config-table";
 
 @Component({
   selector: "app-table",
