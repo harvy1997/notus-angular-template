@@ -36,21 +36,18 @@
         <tr *ngFor="let row of configTable.data">
           <td *ngFor="let column of row.columns"
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <div *ngIf="column.imageArray!=null" class="flex" >
-              <img *ngFor="let urlImg of column.imageArray; let i = index" 
-                src="{{urlImg}}" alt="..." [ngClass]="{'-ml-4':i>0}"
-                class="w-10 h-10 rounded-full border-2 border-slate-50 shadow" />
+            <div *ngIf="column.imageArray!=null" class="flex">
+              <img *ngFor="let urlImg of column.imageArray; let i = index" src="{{urlImg}}" alt="..."
+                [ngClass]="{'-ml-4':i>0}" class="w-10 h-10 rounded-full border-2 border-slate-50 shadow" />
             </div>
             <div class="text-left flex items-center">
               <i *ngIf="column.state!=null && column.state.typeState=='point'"
                 class="fas fa-circle text-{{column.state.color}}-500 mr-2"></i>
-                <i *ngIf="column.state!=null && (column.state.typeState=='arrow-up'||column.state.typeState=='arrow-down')"
-                class="fas fa-{{column.state.typeState}} text-{{column.state.color}}-500 mr-4"
-                ></i>
+              <i *ngIf="column.state!=null && (column.state.typeState=='arrow-up'||column.state.typeState=='arrow-down')"
+                class="fas fa-{{column.state.typeState}} text-{{column.state.color}}-500 mr-4"></i>
               <img *ngIf="column.image!=null" src="{{column.image}}" class="h-12 w-12 bg-white rounded-full border"
                 alt="..." />
-              <span *ngIf="column.text!=null && (column.state==null || column.state.typeState!='bar')" 
-                [ngClass]="{
+              <span *ngIf="column.text!=null && (column.state==null || column.state.typeState!='bar')" [ngClass]="{
                   'text-slate-600':configTable.color=='light',
                   'text-white':configTable.color!='light',
                   'ml-3 font-bold':column.bold
@@ -63,8 +60,7 @@
               <div class="relative w-full">
                 <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
                   <div [ngStyle]="{width:column.state.percent+'%'}"
-                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center"
-                    [ngClass]="{
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" [ngClass]="{
                       'bg-red-500':column.state.color=='red',
                       'bg-teal-500':column.state.color=='teal',
                       'bg-orange-500':column.state.color=='orange',
