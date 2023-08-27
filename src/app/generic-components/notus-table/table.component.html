@@ -1,0 +1,81 @@
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+  [ngClass]="configTable.color === 'light' ? 'bg-white' : 'bg-red-900 text-white'">
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h3 class="font-semibold text-lg" [ngClass]="configTable.color === 'light' ? 'text-slate-700' : 'text-white'">
+          {{configTable.title}}
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="block w-full overflow-x-auto">
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th *ngFor="let header of configTable.headers"
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              configTable.color === 'light'
+                ? 'bg-slate-50 text-slate-500 border-slate-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            ">
+            {{header}}
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              configTable.color === 'light'
+                ? 'bg-slate-50 text-slate-500 border-slate-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            ">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of configTable.data">
+          <td *ngFor="let column of row.columns"
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            <div *ngIf="column.imageArray!=null" class="flex">
+              <img *ngFor="let urlImg of column.imageArray; let i = index" src="{{urlImg}}" alt="..."
+                [ngClass]="{'-ml-4':i>0}" class="w-10 h-10 rounded-full border-2 border-slate-50 shadow" />
+            </div>
+            <div class="text-left flex items-center">
+              <i *ngIf="column.state!=null && column.state.typeState=='point'"
+                class="fas fa-circle text-{{column.state.color}}-500 mr-2"></i>
+              <i *ngIf="column.state!=null && (column.state.typeState=='arrow-up'||column.state.typeState=='arrow-down')"
+                class="fas fa-{{column.state.typeState}} text-{{column.state.color}}-500 mr-4"></i>
+              <img *ngIf="column.image!=null" src="{{column.image}}" class="h-12 w-12 bg-white rounded-full border"
+                alt="..." />
+              <span *ngIf="column.text!=null && (column.state==null || column.state.typeState!='bar')" [ngClass]="{
+                  'text-slate-600':configTable.color=='light',
+                  'text-white':configTable.color!='light',
+                  'ml-3 font-bold':column.bold
+                }">
+                {{column.text}}
+              </span>
+            </div>
+            <div *ngIf="column.state!=null && column.state.typeState=='bar'" class="flex items-center">
+              <span class="mr-2">{{column.text}}</span>
+              <div class="relative w-full">
+                <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
+                  <div [ngStyle]="{width:column.state.percent+'%'}"
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" [ngClass]="{
+                      'bg-red-500':column.state.color=='red',
+                      'bg-teal-500':column.state.color=='teal',
+                      'bg-orange-500':column.state.color=='orange',
+                      'bg-emerald-500':column.state.color=='emerald'
+                    }">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+            <app-table-dropdown></app-table-dropdown>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
