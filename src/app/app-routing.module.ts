@@ -47,7 +47,10 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "landing", component: LandingComponent },
   { path: "", component: IndexComponent },
+  { path: "generic", 
+  loadChildren:() => import('./generic-components/generic.module').then(m => m.GenericModule) },
   { path: "**", redirectTo: "", pathMatch: "full" },
+  
 ];
 
 

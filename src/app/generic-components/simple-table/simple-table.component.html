@@ -1,0 +1,32 @@
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white dark:bg-red-900 dark:text-white overflow-hidden">
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 class="font-semibold text-lg text-slate-700 dark:text-white">
+                    {{_title()}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="block w-full overflow-x-auto">
+        <!-- Projects table -->
+        <table class="items-center w-full bg-transparent border-collapse">
+            <thead>
+                <tr>
+                    <th class="px-6 align-middle border border-solid py-2 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100  dark:bg-red-800 dark:text-red-300 dark:border-red-700"
+                    *ngFor="let header of _config().header">
+                        {{header}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let object of data">
+                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-3 text-left"
+                    *ngFor="let pro of _config().properties">
+                    {{object[pro]+" "+pro}}
+                    </th>
+                </tr>              
+            </tbody>
+        </table>
+    </div>
+</div>
