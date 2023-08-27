@@ -2,11 +2,11 @@ import { Component,Input,signal } from '@angular/core';
 import { configTable } from 'src/app/components/cards/card-social-traffic/card-social-traffic.component';
 
 @Component({
-  selector: 'generic-simple-table',
-  templateUrl: './simple-table.component.html',
-  styleUrls: ['./simple-table.component.scss']
+  selector: 'table-simple',
+  templateUrl: './table-simple.component.html',
+  styleUrls: ['./table-simple.component.scss']
 })
-export class SimpleTableComponent {
+export class TableSimpleComponent {
   @Input()
   get color(): string {
     return this._color;

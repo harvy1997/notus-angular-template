@@ -1,9 +1,21 @@
-<section class="grid gap-4 p-4">
+<section class="grid gap-4 p-4 overflow-hidden">
     <h2><b>Tablas</b></h2>
-    <generic-simple-table
-    [title]="tableConfig.title"
-    [configTable]="tableConfig.config"
-    [data]="tableConfig.data">
-    
-</generic-simple-table>
+    <section>
+        <h3>Light</h3>
+        <table-simple [title]="tableConfig.title" [configTable]="tableConfig.config" [data]="tableConfig.data" />
+    </section>
+    <section class="dark">
+        <h3>Darken</h3>
+        <table-simple [title]="tableConfig.title" [configTable]="tableConfig.config" [data]="tableConfig.data" />
+    </section>
+    <section class="dark">
+        <h3>Darken</h3>
+        <app-table [configTable]="configTable"></app-table>
+    </section>
+</section>
+<section>
+    <h2>Slide bar</h2>
+    <section>
+        <generic-slide-navbar ></generic-slide-navbar>
+    </section>
 </section>

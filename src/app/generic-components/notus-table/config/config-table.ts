@@ -1,14 +1,18 @@
 //Create table
-const ConfigTable = (title: string,
-    color: "light" | "dark",
-    headers: string[],
-    data: RowTable[]
-) => {
-    return {
-        title,
-        color,
-        headers,
-        data,
+class ConfigTable {
+    title?: string;
+    color?: "light" | "dark";
+    headers: string[];
+    data: RowTable[];
+    constructor(title: string,
+                color: "light" | "dark",
+                headers: string[],
+                data: RowTable[]
+    ){
+        this.title=title;
+        this.color=color;
+        this.headers=headers;
+        this.data=data;
     }
 }
 
