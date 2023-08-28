@@ -13,7 +13,7 @@
     <table class="items-center w-full bg-transparent border-collapse">
       <thead>
         <tr>
-          <th *ngFor="let header of configTable?.headers"
+          <th *ngFor="let header of configTable?.config?.headers"
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
             [ngClass]="
               configTable?.color === 'light'
@@ -33,38 +33,38 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of configTable?.data">
-          <td *ngFor="let column of row.columns"
+        <tr *ngFor="let object of configTable?.data">
+          <td *ngFor="let pro of configTable?.config?.properties;let idx=index"
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <div *ngIf="column.imageArray!=null" class="flex">
-              <img *ngFor="let urlImg of column.imageArray; let i = index" src="{{urlImg}}" alt="..."
+            <div *ngIf="object.config[idx].imageArray!=null" class="flex">
+              <img *ngFor="let urlImg of object.config[idx].imageArray; let i = index" src="{{urlImg}}" alt="..."
                 [ngClass]="{'-ml-4':i>0}" class="w-10 h-10 rounded-full border-2 border-slate-50 shadow" />
             </div>
             <div class="text-left flex items-center">
-              <i *ngIf="column.state!=null && column.state.typeState=='point'"
-                class="fas fa-circle text-{{column.state.color}}-500 mr-2"></i>
-              <i *ngIf="column.state!=null && (column.state.typeState=='arrow-up'||column.state.typeState=='arrow-down')"
-                class="fas fa-{{column.state.typeState}} text-{{column.state.color}}-500 mr-4"></i>
-              <img *ngIf="column.image!=null" src="{{column.image}}" class="h-12 w-12 bg-white rounded-full border"
+              <i *ngIf="object.config[idx].state!=null && object.config[idx].state.typeState=='point'"
+                class="fas fa-circle text-{{object.config[idx].state.color}}-500 mr-2"></i>
+              <i *ngIf="object.config[idx].state!=null && (object.config[idx].state.typeState=='arrow-up'||object.config[idx].state.typeState=='arrow-down')"
+                class="fas fa-{{object.config[idx].state.typeState}} text-{{object.config[idx].state.color}}-500 mr-4"></i>
+              <img *ngIf="object.config[idx].image!=null" src="{{object.config[idx].image}}" class="h-12 w-12 bg-white rounded-full border"
                 alt="..." />
-              <span *ngIf="column.text!=null && (column.state==null || column.state.typeState!='bar')" [ngClass]="{
+              <span *ngIf="object[pro]!=null && (object.config[idx].state==null || object.config[idx].state.typeState!='bar')" [ngClass]="{
                   'text-slate-600':configTable?.color=='light',
                   'text-white':configTable?.color!='light',
-                  'ml-3 font-bold':column.bold
+                  'ml-3 font-bold':object.config[idx].bold
                 }">
-                {{column.text}}
+                {{object[pro]}}
               </span>
             </div>
-            <div *ngIf="column.state!=null && column.state.typeState=='bar'" class="flex items-center">
-              <span class="mr-2">{{column.text}}</span>
+            <div *ngIf="object.config[idx].state!=null && object.config[idx].state.typeState=='bar'" class="flex items-center">
+              <span class="mr-2">{{object[pro]}}</span>
               <div class="relative w-full">
                 <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                  <div [ngStyle]="{width:column.state.percent+'%'}"
+                  <div [ngStyle]="{width:object.config[idx].state.percent+'%'}"
                     class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" [ngClass]="{
-                      'bg-red-500':column.state.color=='red',
-                      'bg-teal-500':column.state.color=='teal',
-                      'bg-orange-500':column.state.color=='orange',
-                      'bg-emerald-500':column.state.color=='emerald'
+                      'bg-red-500':object.config[idx].state.color=='red',
+                      'bg-teal-500':object.config[idx].state.color=='teal',
+                      'bg-orange-500':object.config[idx].state.color=='orange',
+                      'bg-emerald-500':object.config[idx].state.color=='emerald'
                     }">
                   </div>
                 </div>

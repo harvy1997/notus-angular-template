@@ -1,59 +1,60 @@
 //Create table
 class ConfigTable {
     title?: string;
+    pageSize?:string;
     color?: "light" | "dark";
-    headers: string[];
-    data: RowTable[];
+    config:{headers:string[],properties: string[]};
+    data:any[];
+
     constructor(title: string,
                 color: "light" | "dark",
-                headers: string[],
-                data: RowTable[]
+                pageSize:string="10",
+                config:{headers:string[],properties: string[]},
+                data: any[]
     ){
         this.title=title;
         this.color=color;
-        this.headers=headers;
+        this.pageSize=pageSize;
+        this.config=config;
         this.data=data;
     }
 }
 
-class RowTable {
-    columns: ColumnTable[];
-    constructor(columns: ColumnTable[]) {
-        this.columns = columns;
-    }
-}
-
-class ColumnTable {
-    text: string | null;
+class ConfigColumnTable {
     bold: boolean;
     image: string | null;
-    state: RowStateTable | null;
+    state:{typeState: "bar" | "point" | "arrow-up" | "arrow-down",
+            color: string,
+            percent: number | null
+        }|null
     imageArray: string[] | null;
-    constructor(text: string | null,
-        bold: boolean = false,
+    constructor(bold: boolean = false,
         image: string | null,
-        state: RowStateTable | null,
+        state: {typeState: "bar" | "point" | "arrow-up" | "arrow-down",
+                color: string,
+                percent: number | null
+            }|null,
         imageArray: string[] | null) {
-        this.text = text;
         this.bold = bold;
         this.image = image;
         this.state = state;
         this.imageArray = imageArray;
     }
 }
-
-class RowStateTable {
-    typeState: "bar" | "point" | "arrow-up" | "arrow-down";
-    color: string;
-    percent: number | null;
-    constructor(typeState: "bar" | "point" | "arrow-up" | "arrow-down",
-        color: string,
-        percent: number | null
-    ) {
-        this.percent = percent;
-        this.typeState = typeState;
-        this.color = color;
-    }
+const typeText=(bold:boolean)=>{
+    return new ConfigColumnTable(bold,null,null,null);
+}
+const typeTextAndImage=(bold:boolean,img:string)=>{
+    return new ConfigColumnTable(bold,img,null,null);
+}
+const typeState=(bold:boolean,typeState:"point" | "arrow-up" | "arrow-down",color:string)=>{
+    return new ConfigColumnTable(bold,null,{typeState:typeState,color:color,percent:null},null)
+}
+const typeProgress=(bold:boolean,color:string,percent: number)=>{
+    return new ConfigColumnTable(bold,null,{typeState:"bar",color:color,percent:percent},null)
+}
+const typeImageGroup=(imageArray: string[])=>{
+    return new ConfigColumnTable(false,null,null,imageArray);
 }
 
 const ColorsRowStateOption = {
@@ -65,8 +66,12 @@ const ColorsRowStateOption = {
 
 export {
     ConfigTable,
-    RowTable,
-    ColumnTable,
-    RowStateTable,
-    ColorsRowStateOption
+    ConfigColumnTable,
+    // ConfigState,
+    ColorsRowStateOption,
+    typeText,
+    typeTextAndImage,
+    typeState,
+    typeProgress,
+    typeImageGroup
 }
