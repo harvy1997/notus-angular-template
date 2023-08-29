@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ColorsRowStateOption, ConfigColumnTable, ConfigTable, typeImageGroup, typeProgress, typeState, typeText, typeTextAndImage } from '../notus-table/config/config-table';
+import { ConfigTable, propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
+import { ConfigDropdown, typeTitle, typeMetod, typeUrl } from '../notus-dropdown/config/config-dropdowm';
 
 @Component({
   selector: 'app-generic',
@@ -21,38 +22,35 @@ export class GenericComponent {
 
   
   // creacion de headers
-  config={headers:["Project","Budget","Status","Users","Completion"],properties:["Project","Budget","Status","Users","Completion"]};
+  config={headers:["Project","Budget","Status","Users","Completion"],
+          properties:[propertieTextAndImage("Project","ProjectImg",true),
+                      propertieText("Budget",false),
+                      propertieState("Status","point",false),
+                      propertieImageGroup("Users"),
+                      propertieProgress("Completion",false)
+                    ]
+          };
   data=[
-    {Project:"Argon Design System",Budget:"2000 $",Status:"pending",Users:null,Completion:"60%", 
-    config: [ typeTextAndImage(true,"assets/img/bootstrap.jpg"),
-              typeText(false),
-              typeState(false,"point",ColorsRowStateOption.pending),
-              typeImageGroup([ "assets/img/team-1-800x800.jpg",
-                              "assets/img/team-2-800x800.jpg",
-                              "assets/img/team-3-800x800.jpg",
-                              "assets/img/team-4-470x470.png"]),
-              typeProgress(false,ColorsRowStateOption.delayed,60)
-            ]},
-    {Project:"Angular Now UI Kit PRO",Budget:"2000 $",Status:"completed",Users:null,Completion:"100%", 
-    config: [ typeTextAndImage(true,"assets/img/angular.jpg"),
-              typeText(false),
-              typeState(false,"point",ColorsRowStateOption.complete),
-              typeImageGroup([ "assets/img/team-1-800x800.jpg",
-                              "assets/img/team-2-800x800.jpg",
-                              "assets/img/team-3-800x800.jpg",
-                              "assets/img/team-4-470x470.png"]),
-              typeProgress(false,ColorsRowStateOption.complete,100)
-            ]},
-    {Project:"Black Dashboard Sketch",Budget:"2000 $",Status:"delayed",Users:null,Completion:"73%", 
-    config: [typeTextAndImage(true,"assets/img/sketch.jpg"),
-             typeText(false),
-             typeState(false,"point",ColorsRowStateOption.delayed),
-             typeImageGroup([ "assets/img/team-1-800x800.jpg",
-                              "assets/img/team-2-800x800.jpg",
-                              "assets/img/team-3-800x800.jpg",
-                              "assets/img/team-4-470x470.png"]),
-              typeProgress(false,ColorsRowStateOption.delayed,73)
-            ]},
+    {ProjectImg:"assets/img/bootstrap.jpg",Project:"Argon Design System",Budget:"2000 $",Status:"pending",
+      Users:[ "assets/img/team-1-800x800.jpg",
+              "assets/img/team-2-800x800.jpg",
+              "assets/img/team-3-800x800.jpg",
+              "assets/img/team-4-470x470.png"],
+      Completion:"60%", 
+    },
+    {ProjectImg:"assets/img/angular.jpg",Project:"Angular Now UI Kit PRO",Budget:"2000 $",Status:"completed",
+      Users:[ "assets/img/team-1-800x800.jpg",
+              "assets/img/team-2-800x800.jpg",
+              "assets/img/team-3-800x800.jpg",
+              "assets/img/team-4-470x470.png"],
+      Completion:"100%"},
+    {ProjectImg:"assets/img/sketch.jpg",Project:"Black Dashboard Sketch",Budget:"2000 $",Status:"delayed",
+      Users:[ "assets/img/team-1-800x800.jpg",
+              "assets/img/team-2-800x800.jpg",
+              "assets/img/team-3-800x800.jpg",
+              "assets/img/team-4-470x470.png"],
+      Completion:"33%"
+    },
   ]   
   configTable=new ConfigTable("Card Tables",
                               "light",
@@ -60,4 +58,16 @@ export class GenericComponent {
                               this.config,
                               this.data,
                             )
+
+
+  pru=()=>{
+    console.log("prueba");
+  }
+  configDropdown=new ConfigDropdown(null,[
+                                    typeTitle("typeTitle"),
+                                    typeMetod("typeMetod",this.pru),
+                                    typeUrl("typeUrl",String.raw`/admin/tables`)
+  ])
+
+
 }

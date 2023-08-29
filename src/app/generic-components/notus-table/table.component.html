@@ -22,7 +22,7 @@
             ">
             {{header}}
           </th>
-          <th
+          <th *ngIf="configDropdowm!=null" 
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
             [ngClass]="
               configTable?.color === 'light'
@@ -36,43 +36,51 @@
         <tr *ngFor="let object of configTable?.data">
           <td *ngFor="let pro of configTable?.config?.properties;let idx=index"
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <div *ngIf="object.config[idx].imageArray!=null" class="flex">
-              <img *ngFor="let urlImg of object.config[idx].imageArray; let i = index" src="{{urlImg}}" alt="..."
+            
+            <!-- typeImageGroup -->
+            <div *ngIf="pro.type=='typeImageGroup'" class="flex">
+              <img *ngFor="let urlImg of object[pro.column]; let i = index" src="{{urlImg}}" alt="..."
                 [ngClass]="{'-ml-4':i>0}" class="w-10 h-10 rounded-full border-2 border-slate-50 shadow" />
             </div>
+
+            <!-- typeState,typeTextAndImage,typeText -->
+            <!-- class="fas fa-circle text-{{object.config[idx].state.color}}-500 mr-2"></i> -->
+            <!-- class="fas fa-{{object.config[idx].state.typeState}} text-{{object.config[idx].state.color}}-500 mr-4"></i> -->
             <div class="text-left flex items-center">
-              <i *ngIf="object.config[idx].state!=null && object.config[idx].state.typeState=='point'"
-                class="fas fa-circle text-{{object.config[idx].state.color}}-500 mr-2"></i>
-              <i *ngIf="object.config[idx].state!=null && (object.config[idx].state.typeState=='arrow-up'||object.config[idx].state.typeState=='arrow-down')"
-                class="fas fa-{{object.config[idx].state.typeState}} text-{{object.config[idx].state.color}}-500 mr-4"></i>
-              <img *ngIf="object.config[idx].image!=null" src="{{object.config[idx].image}}" class="h-12 w-12 bg-white rounded-full border"
-                alt="..." />
-              <span *ngIf="object[pro]!=null && (object.config[idx].state==null || object.config[idx].state.typeState!='bar')" [ngClass]="{
+              <i *ngIf="pro.type=='typeState' && pro.typeState=='point'"
+                class="fas fa-circle text-emerald-500 mr-2"></i>
+              <i *ngIf="pro.type=='typeState' && (pro.typeState=='arrow-up'||pro.typeState=='arrow-down')"
+                class="fas fa-{{pro.typeState}} text-emerald-500 mr-4"></i>
+
+              <img *ngIf="pro.type=='typeTextAndImage' && pro.columnImg!=null" src="{{object[pro.columnImg]}}" class="h-12 w-12 bg-white rounded-full border" alt="..." />
+              <span *ngIf="pro.type=='typeTextAndImage' || pro.type=='typeState' || pro.type=='typeText'" [ngClass]="{
                   'text-slate-600':configTable?.color=='light',
                   'text-white':configTable?.color!='light',
-                  'ml-3 font-bold':object.config[idx].bold
+                  'ml-3 font-bold':pro.bold
                 }">
-                {{object[pro]}}
+                {{object[pro.column]}}
               </span>
             </div>
-            <div *ngIf="object.config[idx].state!=null && object.config[idx].state.typeState=='bar'" class="flex items-center">
-              <span class="mr-2">{{object[pro]}}</span>
+            <!-- typeProgress -->
+            <div *ngIf="pro.type=='typeProgress' && pro.typeState=='bar'" class="flex items-center">
+              <span class="mr-2">{{object[pro.column]}}</span>
               <div class="relative w-full">
                 <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                  <div [ngStyle]="{width:object.config[idx].state.percent+'%'}"
-                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" [ngClass]="{
-                      'bg-red-500':object.config[idx].state.color=='red',
-                      'bg-teal-500':object.config[idx].state.color=='teal',
-                      'bg-orange-500':object.config[idx].state.color=='orange',
-                      'bg-emerald-500':object.config[idx].state.color=='emerald'
+                  <div [ngStyle]="{width:object[pro.column]}"
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" 
+                    [ngClass]="{
+                      'bg-red-500':convertStringToNumber(object[pro.column])<50,
+                      'bg-orange-500':convertStringToNumber(object[pro.column])>50 && convertStringToNumber(object[pro.column])<80,
+                      'bg-teal-500':convertStringToNumber(object[pro.column])<100 && convertStringToNumber(object[pro.column])>80  ,
+                      'bg-emerald-500':convertStringToNumber(object[pro.column])==100
                     }">
                   </div>
                 </div>
               </div>
             </div>
           </td>
-          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-            <!-- <app-table-dropdown></app-table-dropdown> -->
+          <td *ngIf="configDropdowm!=null" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+            <app-notus-dropdown [config]="configDropdowm"></app-notus-dropdown>
           </td>
         </tr>
       </tbody>

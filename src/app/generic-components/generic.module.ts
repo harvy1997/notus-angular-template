@@ -7,6 +7,7 @@ import { GenericComponent } from './generic/generic.component';
 import { SlideNavbarComponent } from './slide-navbar/slide-navbar.component';
 import { TableComponent } from './notus-table/table.component';
 import { TableSimpleComponent } from './table-simple/table-simple.component';
+import { NotusDropdownComponent } from './notus-dropdown/notus-dropdown.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { TableSimpleComponent } from './table-simple/table-simple.component';
     GenericComponent,
     TableSimpleComponent,
     SlideNavbarComponent,
-    TableComponent
+    TableComponent,
+    NotusDropdownComponent
   ],
   imports: [
     CommonModule,

@@ -3,13 +3,25 @@ class ConfigTable {
     title?: string;
     pageSize?:string;
     color?: "light" | "dark";
-    config:{headers:string[],properties: string[]};
+    config:{headers:string[],
+            properties:{column:string,
+                        columnImg:string|null,
+                        type:string,
+                        bold:boolean,
+                        typeState:string|null}[]
+        };
     data:any[];
 
     constructor(title: string,
                 color: "light" | "dark",
                 pageSize:string="10",
-                config:{headers:string[],properties: string[]},
+                config:{headers:string[],
+                        properties:{column:string,
+                                    columnImg:string|null,
+                                    type:string,
+                                    bold:boolean,
+                                    typeState:string|null}[]
+                        },
                 data: any[]
     ){
         this.title=title;
@@ -20,41 +32,40 @@ class ConfigTable {
     }
 }
 
-class ConfigColumnTable {
-    bold: boolean;
-    image: string | null;
-    state:{typeState: "bar" | "point" | "arrow-up" | "arrow-down",
-            color: string,
-            percent: number | null
-        }|null
-    imageArray: string[] | null;
-    constructor(bold: boolean = false,
-        image: string | null,
-        state: {typeState: "bar" | "point" | "arrow-up" | "arrow-down",
-                color: string,
-                percent: number | null
-            }|null,
-        imageArray: string[] | null) {
-        this.bold = bold;
-        this.image = image;
-        this.state = state;
-        this.imageArray = imageArray;
-    }
+const propertieText=(column:string,bold:boolean)=>{
+    return {column:column,
+            columnImg:null,
+            type:"typeText",
+            bold:bold,
+            typeState:null}
 }
-const typeText=(bold:boolean)=>{
-    return new ConfigColumnTable(bold,null,null,null);
+const propertieTextAndImage=(column:string,columnImg:string,bold:boolean)=>{
+    return {column:column,
+            columnImg:columnImg,
+            type:"typeTextAndImage",
+            bold:bold,
+            typeState:null}
 }
-const typeTextAndImage=(bold:boolean,img:string)=>{
-    return new ConfigColumnTable(bold,img,null,null);
+const propertieState=(column:string,typeState:"point" | "arrow-up" | "arrow-down",bold:boolean)=>{
+    return {column:column,
+            columnImg:null,
+            type:"typeState",
+            bold:bold,
+            typeState:typeState}
 }
-const typeState=(bold:boolean,typeState:"point" | "arrow-up" | "arrow-down",color:string)=>{
-    return new ConfigColumnTable(bold,null,{typeState:typeState,color:color,percent:null},null)
+const propertieProgress=(column:string,bold:boolean)=>{
+    return {column:column,
+        columnImg:null,
+        type:"typeProgress",
+        bold:bold,
+        typeState:"bar"}
 }
-const typeProgress=(bold:boolean,color:string,percent: number)=>{
-    return new ConfigColumnTable(bold,null,{typeState:"bar",color:color,percent:percent},null)
-}
-const typeImageGroup=(imageArray: string[])=>{
-    return new ConfigColumnTable(false,null,null,imageArray);
+const propertieImageGroup=(column:string)=>{
+    return {column:column,
+        columnImg:null,
+        type:"typeImageGroup",
+        bold:false,
+        typeState:null}
 }
 
 const ColorsRowStateOption = {
@@ -66,12 +77,11 @@ const ColorsRowStateOption = {
 
 export {
     ConfigTable,
-    ConfigColumnTable,
     // ConfigState,
     ColorsRowStateOption,
-    typeText,
-    typeTextAndImage,
-    typeState,
-    typeProgress,
-    typeImageGroup
+    propertieText,
+    propertieTextAndImage,
+    propertieState,
+    propertieProgress,
+    propertieImageGroup
 }
