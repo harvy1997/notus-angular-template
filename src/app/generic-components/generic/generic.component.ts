@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ConfigTable, propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
 import { ConfigDropdown, typeTitle, typeMetod, typeUrl } from '../notus-dropdown/config/config-dropdowm';
+import { ConfigNavbar } from '../notus-navbar/config/config-notus-navbar';
 
 @Component({
   selector: 'app-generic',
@@ -68,6 +69,10 @@ export class GenericComponent {
                                     typeMetod("typeMetod",this.pru),
                                     typeUrl("typeUrl",String.raw`/admin/tables`)
   ])
+
+  configNavbar=new ConfigNavbar( "Miggo",
+   [{text:"Login",metod:this.pru,icon:"fab fa-facebook"}],
+   [{text:"Facebook",icon:"fab fa-facebook",rute:String.raw`/pru`}]);
 
 
 }
