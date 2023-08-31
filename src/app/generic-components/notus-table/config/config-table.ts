@@ -70,9 +70,9 @@ const propertieImageGroup=(column:string)=>{
 
 const ColorsRowStateOption = {
     complete: "emerald",
-    delayed: "red",
     schedule: "teal",
     pending: "orange",
+    delayed: "red",
 }
 
 export {

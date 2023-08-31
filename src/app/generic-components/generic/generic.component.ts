@@ -31,20 +31,20 @@ export class GenericComponent {
                     ]
           };
   data=[
-    {ProjectImg:"assets/img/bootstrap.jpg",Project:"Argon Design System",Budget:"2000 $",Status:"pending",
+    {ProjectImg:"assets/img/bootstrap.jpg",Project:"Argon Design System",Budget:"2000 $",Status:"Pendiente",
       Users:[ "assets/img/team-1-800x800.jpg",
               "assets/img/team-2-800x800.jpg",
               "assets/img/team-3-800x800.jpg",
               "assets/img/team-4-470x470.png"],
       Completion:"60%", 
     },
-    {ProjectImg:"assets/img/angular.jpg",Project:"Angular Now UI Kit PRO",Budget:"2000 $",Status:"completed",
+    {ProjectImg:"assets/img/angular.jpg",Project:"Angular Now UI Kit PRO",Budget:"2000 $",Status:"Completado",
       Users:[ "assets/img/team-1-800x800.jpg",
               "assets/img/team-2-800x800.jpg",
               "assets/img/team-3-800x800.jpg",
               "assets/img/team-4-470x470.png"],
       Completion:"100%"},
-    {ProjectImg:"assets/img/sketch.jpg",Project:"Black Dashboard Sketch",Budget:"2000 $",Status:"delayed",
+    {ProjectImg:"assets/img/sketch.jpg",Project:"Black Dashboard Sketch",Budget:"2000 $",Status:"inactivo",
       Users:[ "assets/img/team-1-800x800.jpg",
               "assets/img/team-2-800x800.jpg",
               "assets/img/team-3-800x800.jpg",

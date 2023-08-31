@@ -48,9 +48,29 @@
             <!-- class="fas fa-{{object.config[idx].state.typeState}} text-{{object.config[idx].state.color}}-500 mr-4"></i> -->
             <div class="text-left flex items-center">
               <i *ngIf="pro.type=='typeState' && pro.typeState=='point'"
-                class="fas fa-circle text-emerald-500 mr-2"></i>
+                class="fas fa-circle text-emerald-500 mr-2"
+                [ngClass]="{
+                  'text-emerald-500': (object[pro.column]|uppercase) =='ACTIVO' || 
+                                      (object[pro.column]|uppercase)=='COMPLETADO' || 
+                                      (object[pro.column]|uppercase)=='FINALIZADO',
+                  'text-teal-500':    (object[pro.column]|uppercase)=='PROGRAMADO',
+                  'text-orange-500':  (object[pro.column]|uppercase)=='PENDIENTE',
+                  'text-red-500':     (object[pro.column]|uppercase)=='ELIMINADO' || 
+                                      (object[pro.column]|uppercase)=='INACTIVO',
+                }"
+                ></i>
               <i *ngIf="pro.type=='typeState' && (pro.typeState=='arrow-up'||pro.typeState=='arrow-down')"
-                class="fas fa-{{pro.typeState}} text-emerald-500 mr-4"></i>
+                class="fas fa-{{pro.typeState}}"
+                [ngClass]="{
+                  'text-emerald-500': (object[pro.column]|uppercase) =='ACTIVO' || 
+                                      (object[pro.column]|uppercase)=='COMPLETADO' || 
+                                      (object[pro.column]|uppercase)=='FINALIZADO',
+                  'text-teal-500':    (object[pro.column]|uppercase)=='PROGRAMADO',
+                  'text-orange-500':  (object[pro.column]|uppercase)=='PENDIENTE',
+                  'text-red-500':     (object[pro.column]|uppercase)=='ELIMINADO' || 
+                                      (object[pro.column]|uppercase)=='INACTIVO',
+                }"
+                ></i>
 
               <img *ngIf="pro.type=='typeTextAndImage' && pro.columnImg!=null" src="{{object[pro.columnImg]}}" class="h-12 w-12 bg-white rounded-full border" alt="..." />
               <span *ngIf="pro.type=='typeTextAndImage' || pro.type=='typeState' || pro.type=='typeText'" [ngClass]="{
