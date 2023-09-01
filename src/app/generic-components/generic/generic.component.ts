@@ -66,13 +66,25 @@ export class GenericComponent {
   }
   configDropdown=new ConfigDropdown(null,[
                                     typeTitle("typeTitle"),
-                                    typeMetod("typeMetod",this.pru),
-                                    typeUrl("typeUrl",String.raw`/admin/tables`)
+                                    typeMetod("typeMetod",this.pru,null),
+                                    typeUrl("typeUrl",String.raw`/admin/tables`,null)
   ])
 
-  configNavbar=new ConfigNavbar( "Miggo",
-   [{text:"Login",metod:this.pru,icon:"fab fa-facebook"}],
-   [{text:"Facebook",icon:"fab fa-facebook",rute:String.raw`/pru`}]);
+  configDropdownNavbar=new ConfigDropdown("Navegacion",[
+    typeTitle("Menu"),
+    typeMetod("Facebook",this.pru,'fab fa-facebook'),
+    typeMetod("Tweet",this.pru,'fab fa-twitter'),
+    typeMetod("Star",this.pru,'fab fa-github')
+])
+
+  configNavbar=new ConfigNavbar( {text:"",image:"assets/img/bootstrap.jpg"},null,
+   [{text:"Login",metod:this.pru,icon:"fas fa-arrow-alt-circle-down"}],
+   [{text:"Share",icon:"fab fa-facebook" ,rute:String.raw`/pru`},
+   {text:"Star",icon:"fab fa-github" ,rute:String.raw`/pru`},
+   {text:"Tweet",icon:"fab fa-twitter" ,rute:String.raw`/pru`}],
+   [this.configDropdownNavbar,this.configDropdown]);
+
+
 
 
 }

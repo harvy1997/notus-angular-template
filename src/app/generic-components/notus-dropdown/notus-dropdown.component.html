@@ -13,14 +13,17 @@
     <div *ngFor="let option of config?.options">
       <span *ngIf="option.type=='title'"
         class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-slate-400">
+        <i *ngIf="option.icon!=null" class="{{option.icon}} leading-lg lg:text-slate-200 text-lg text-slate-400"></i>
         {{option.optionText}}
       </span>
       <a *ngIf="option.url!=null && option.type!='title'" [routerLink]="[option.url]"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700 hover:bg-slate-200">
+        <i *ngIf="option.icon!=null" class="{{option.icon}} leading-lg lg:text-slate-200 text-lg text-slate-400"></i>
         {{option.optionText}}
       </a>
       <a *ngIf="option.metod!=null && option.type!='title'" (click)="option.metod()" 
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700 cursor-pointer hover:bg-slate-200">
+        <i *ngIf="option.icon!=null" class="{{option.icon}} leading-lg lg:text-slate-200 text-lg text-slate-400"></i>
         {{option.optionText}}
       </a>
     </div>
