@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ConfigTable, propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
 import { ConfigDropdown, typeTitle, typeMetod, typeUrl } from '../notus-dropdown/config/config-dropdowm';
 import { ConfigNavbar } from '../notus-navbar/config/config-notus-navbar';
+import { ConfigProfile } from '../notus-profile/config/config-profile';
 
 @Component({
   selector: 'app-generic',
@@ -21,7 +22,6 @@ export class GenericComponent {
     ]    
   }
 
-  
   // creacion de headers
   config={headers:["Project","Budget","Status","Users","Completion"],
           properties:[propertieTextAndImage("Project","ProjectImg",true),
@@ -84,7 +84,28 @@ export class GenericComponent {
    {text:"Tweet",icon:"fab fa-twitter" ,rute:String.raw`/pru`}],
    [this.configDropdownNavbar,this.configDropdown]);
 
-
-
+  dato1={
+    dataName:"Correo",
+    dataValue:"JennaStones@correo.com",
+  };
+  dato2={
+    dataName:"Tipo Identificación",
+    dataValue:"CC",
+  };
+  dato3={
+    dataName:"Identificación",
+    dataValue:"1104563333",
+  };
+   configProfile=new ConfigProfile(
+    "assets/img/team-2-800x800.jpg",
+    "Jenna Stones",
+    "LOS ANGELES, CALIFORNIA",
+    [this.dato1,this.dato2,this.dato3],
+    "University of Computer Science",
+    "Solution Manager - Creative Tim Officer",
+    "An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.",
+    new Date(),
+    0,0
+    );
 
 }

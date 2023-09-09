@@ -9,6 +9,7 @@ import { TableComponent } from './notus-table/table.component';
 import { TableSimpleComponent } from './table-simple/table-simple.component';
 import { NotusDropdownComponent } from './notus-dropdown/notus-dropdown.component';
 import { NotusNavbarComponent } from './notus-navbar/notus-navbar.component';
+import { NotusProfileComponent } from './notus-profile/notus-profile.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NotusNavbarComponent } from './notus-navbar/notus-navbar.component';
     SlideNavbarComponent,
     TableComponent,
     NotusDropdownComponent,
-    NotusNavbarComponent
+    NotusNavbarComponent,
+    NotusProfileComponent
   ],
   imports: [
     CommonModule,
