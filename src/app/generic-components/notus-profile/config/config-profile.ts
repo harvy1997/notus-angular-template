@@ -1,4 +1,4 @@
-//Create dropdown
+//Create Profile
 class ConfigProfile {
     image:string|null;
     name:string|null;
@@ -47,8 +47,9 @@ const profileTypeBasic=(image:string|null,
                 role:string|null,
                 aboutMe:string|null,
                 creationDate:Date|null)=>{
-return new ConfigProfile(image,name,properties,data,sede,company,role,aboutMe,creationDate,null,null);
+    return new ConfigProfile(image,name,properties,data,sede,company,role,aboutMe,creationDate,null,null);
 }
+
 const profileTypeWithNotifiAndPend=(image:string|null,
                             name:string|null,
                             properties:{title:string,column:string}[]|null,

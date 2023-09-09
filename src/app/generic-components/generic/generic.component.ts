@@ -85,6 +85,7 @@ export class GenericComponent {
    [this.configDropdownNavbar,this.configDropdown]);
 
    dataProfile={
+      imagen:"assets/img/team-2-800x800.jpg",
      correo:"JennaStones@correo.com",
      tipoDocumento:"CC",
      documento:"1104563333",
@@ -96,16 +97,16 @@ export class GenericComponent {
      empresa:"University of Computer Science",
      sobreMi:"An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.",
    }
-  properties=[
+  propertiesProfile=[
     {title:"Correo",column:"correo"},
     {title:"Tipo de documento",column:"tipoDocumento"},
     {title:"Documento",column:"documento"},
     {title:"Sede",column:"sede"},
   ];
    configProfile=profileTypeBasic(
-    "assets/img/team-2-800x800.jpg",
+    this.dataProfile.imagen,
     this.dataProfile.nombre,
-    this.properties,
+    this.propertiesProfile,
     this.dataProfile,
     this.dataProfile.sede,
     this.dataProfile.empresa,
