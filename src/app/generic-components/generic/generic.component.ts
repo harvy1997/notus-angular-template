@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ConfigTable, propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
 import { ConfigDropdown, typeTitle, typeMetod, typeUrl } from '../notus-dropdown/config/config-dropdowm';
 import { ConfigNavbar } from '../notus-navbar/config/config-notus-navbar';
-import { ConfigProfile } from '../notus-profile/config/config-profile';
+import { ConfigProfile, profileTypeBasic } from '../notus-profile/config/config-profile';
 
 @Component({
   selector: 'app-generic',
@@ -84,28 +84,34 @@ export class GenericComponent {
    {text:"Tweet",icon:"fab fa-twitter" ,rute:String.raw`/pru`}],
    [this.configDropdownNavbar,this.configDropdown]);
 
-  dato1={
-    dataName:"Correo",
-    dataValue:"JennaStones@correo.com",
-  };
-  dato2={
-    dataName:"Tipo Identificación",
-    dataValue:"CC",
-  };
-  dato3={
-    dataName:"Identificación",
-    dataValue:"1104563333",
-  };
-   configProfile=new ConfigProfile(
+   dataProfile={
+     correo:"JennaStones@correo.com",
+     tipoDocumento:"CC",
+     documento:"1104563333",
+     nombre:"Jenna Stones",
+     fechaCreacion:new Date(),
+     telefono:"3333333333",
+     sede:"Los Angeles, California",
+     rol:"Solution Manager - Creative Tim Officer",
+     empresa:"University of Computer Science",
+     sobreMi:"An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.",
+   }
+  properties=[
+    {title:"Correo",column:"correo"},
+    {title:"Tipo de documento",column:"tipoDocumento"},
+    {title:"Documento",column:"documento"},
+    {title:"Sede",column:"sede"},
+  ];
+   configProfile=profileTypeBasic(
     "assets/img/team-2-800x800.jpg",
-    "Jenna Stones",
-    "LOS ANGELES, CALIFORNIA",
-    [this.dato1,this.dato2,this.dato3],
-    "University of Computer Science",
-    "Solution Manager - Creative Tim Officer",
-    "An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.",
-    new Date(),
-    0,0
-    );
+    this.dataProfile.nombre,
+    this.properties,
+    this.dataProfile,
+    this.dataProfile.sede,
+    this.dataProfile.empresa,
+    this.dataProfile.rol,
+    this.dataProfile.sobreMi,
+    this.dataProfile.fechaCreacion
+   )
 
 }

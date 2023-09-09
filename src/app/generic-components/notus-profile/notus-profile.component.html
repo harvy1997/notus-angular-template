@@ -9,25 +9,25 @@
       </div>
       <div class="w-full px-4 text-center mt-20">
         <div class="flex justify-center py-4 lg:pt-4 pt-8">
-          <div class="mr-4 p-3 text-center">
-            <span *ngIf="config?.notificaciones!=null"
+          <div *ngIf="config?.notifications!=null" class="mr-4 p-3 text-center">
+            <span
               class="text-xl font-bold block uppercase tracking-wide text-slate-600">
               <span>
-                {{config?.notificaciones}}
+                {{config?.notifications}}
               </span>
             </span>
             <span class="text-sm text-slate-400">Notificaciones</span>
           </div>
           <div class="mr-4 p-3 text-center">
             <span class="text-xl font-bold block uppercase tracking-wide text-slate-600">
-              {{config?.fechaCreacion|date:"dd-MM-yyyy" }}
+              {{config?.creationDate|date:"dd-MM-yyyy" }}
             </span>
             <span class="text-sm text-slate-400">Fecha de union</span>
           </div>
-          <div class="lg:mr-4 p-3 text-center">
+          <div *ngIf="config?.pending!=null" class="lg:mr-4 p-3 text-center">
             <span class="text-xl font-bold block uppercase tracking-wide text-slate-600">
               <span>
-                {{config?.pendientes}}
+                {{config?.pending}}
               </span>
             </span>
             <span class="text-sm text-slate-400">Pendientes</span>
@@ -38,26 +38,26 @@
     <div class="text-center mt-12">
       <h3 class="text-xl font-semibold leading-normal mb-2 text-slate-700 mb-2">
         <span *ngIf="!edit">
-          {{config?.nombre}}
+          {{config?.name}}
         </span>
         <input
         class="text-xl text-center border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 mb-5"
-        *ngIf="edit" type="text" value={{config?.nombre}} />
+        *ngIf="edit" type="text" value={{config?.name}} />
       </h3>
-      <div *ngIf="config?.informacionGeneral!=null"
+      <div *ngIf="config?.data!=null"
         class="grid justify-around text-base leading-normal text-slate-700 mb-10">
-        <div *ngFor="let informacion of config?.informacionGeneral"
+        <div *ngFor="let property of config?.properties"
           class="grid items-center grid-cols-2 text-left font-medium">
-          <span class="">
-            {{informacion?.dataName}}:<br />
+          <span >
+            {{property?.title}}:<br />
           </span>
           <span class="ml-5">
-            <span *ngIf="!edit">
-              {{informacion?.dataValue}}<br />
+            <span *ngIf="config?.data!=null && property?.column!=null && !edit">
+              {{config?.data[property.column]}}<br />
             </span>
             <input
               class="text-center border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 mb-5"
-              *ngIf="edit" type="text" value={{informacion?.dataValue}} />
+              *ngIf="edit" type="text" value={{config?.data[property.column]}} />
           </span>
         </div>
       </div>
@@ -67,11 +67,11 @@
       </div>
       <div class="mb-2 text-slate-600 mt-10">
         <i class="fas fa-briefcase mr-2 text-lg text-slate-400"></i>
-        {{config?.rol}}
+        {{config?.role}}
       </div>
       <div class="mb-2 text-slate-600">
         <i class="fas fa-university mr-2 text-lg text-slate-400"></i>
-        {{config?.empresa}}
+        {{config?.company}}
       </div>
     </div>
     <div class="mt-10 py-10 border-t border-slate-200 text-center">
@@ -79,11 +79,11 @@
         <div class="w-full lg:w-9/12 px-4">
           <p class="mb-4 text-lg leading-relaxed text-slate-700">
             <span *ngIf="!edit">
-              {{config?.sobreMi}}
+              {{config?.aboutMe}}
             </span>
             <textarea type="text"
               class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              rows="4" [value]="config?.sobreMi">
+              rows="4" [value]="config?.aboutMe">
             </textarea>
           </p>
         </div>

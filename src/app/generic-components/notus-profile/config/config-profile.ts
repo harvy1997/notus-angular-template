@@ -1,40 +1,70 @@
 //Create dropdown
 class ConfigProfile {
     image:string|null;
-    nombre:string|null;
+    name:string|null;
+    properties:{title:string,column:string}[]|null;
+    data:any|null;
     sede:string|null;
-    informacionGeneral:{dataName:string|null,dataValue:string|null}[];
-    empresa:string|null;
-    rol:string|null;
-    sobreMi:string|null;
-    fechaCreacion:Date|null;
-    pendientes:number|null;
-    notificaciones:number|null;
+    company:string|null;
+    role:string|null;
+    aboutMe:string|null;
+    creationDate:Date|null;
+    pending:number|null;
+    notifications:number|null;
 
     constructor(image:string|null,
-        nombre:string|null,
+        name:string|null,
+        properties:{title:string,column:string}[]|null,
+        data:any|null,
         sede:string|null,
-        informacionGeneral:{dataName:string|null,dataValue:string|null}[],
-        empresa:string|null,
-        rol:string|null,
-        sobreMi:string|null,
-        fechaCreacion:Date|null,
-        pendientes:number|null,
-        notificaciones:number|null
+        company:string|null,
+        role:string|null,
+        aboutMe:string|null,
+        creationDate:Date|null,
+        pending:number|null,
+        notifications:number|null
         ){
         this.image=image;
         this.sede=sede;
-        this.nombre=nombre;
-        this.empresa=empresa;
-        this.rol=rol;
-        this.sobreMi=sobreMi;
-        this.fechaCreacion=fechaCreacion;
-        this.pendientes=pendientes;
-        this.notificaciones=notificaciones;
-        this.informacionGeneral=informacionGeneral;
+        this.name=name;
+        this.company=company;
+        this.role=role;
+        this.aboutMe=aboutMe;
+        this.creationDate=creationDate;
+        this.pending=pending;
+        this.notifications=notifications;
+        this.data=data;
+        this.properties=properties;
     }
 }
 
+const profileTypeBasic=(image:string|null,
+                name:string|null,
+                properties:{title:string,column:string}[]|null,
+                data:any|null,
+                sede:string|null,
+                company:string|null,
+                role:string|null,
+                aboutMe:string|null,
+                creationDate:Date|null)=>{
+return new ConfigProfile(image,name,properties,data,sede,company,role,aboutMe,creationDate,null,null);
+}
+const profileTypeWithNotifiAndPend=(image:string|null,
+                            name:string|null,
+                            properties:{title:string,column:string}[]|null,
+                            data:any|null,
+                            sede:string|null,
+                            company:string|null,
+                            role:string|null,
+                            aboutMe:string|null,
+                            creationDate:Date|null,
+                            pending:number|null,
+                            notifications:number|null)=>{
+    return new ConfigProfile(image,name,properties,data,sede,company,role,aboutMe,creationDate,pending,notifications);
+}
+
 export {
+    profileTypeBasic,
+    profileTypeWithNotifiAndPend,
     ConfigProfile
 }
