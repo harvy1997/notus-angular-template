@@ -2,4 +2,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url(@fortawesome/fontawesome-free/css/all.min.css)
+@import url(@fortawesome/fontawesome-free/css/all.min.css);
+
+/*styles propios*/
+
+/* ===== Scrollbar CSS ===== */
+:root{
+  --scrollbar-color:rgb(82 82 82);
+}
+.dark{
+  --scrollbar-color:white;
+}
+  /* Firefox */
+  *{
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color) #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: 10px;
+    border: unset;
+  }

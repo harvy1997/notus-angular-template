@@ -13,10 +13,13 @@
         <app-table [configTable]="configTable" [configDropdowm]="configDropdown"></app-table>
     </section>
 </section>
-<section>
-    <h2>Slide bar</h2>
+<section class="grid gap-4 grid-cols-4 p-4 overflow-hidden">
+    <h2 class="col-start-1 col-end-5">Slide bar</h2>
     <section>
-        <generic-slide-navbar ></generic-slide-navbar>
+        <generic-slide-navbar [data]="menuConfig" title="Miggo contable"></generic-slide-navbar>
+    </section>
+    <section class="dark">
+        <generic-slide-navbar [data]="menuConfig" title="Miggo contable"></generic-slide-navbar>
     </section>
 </section>
 <section>

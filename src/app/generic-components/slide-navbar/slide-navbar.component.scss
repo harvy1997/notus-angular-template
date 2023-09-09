@@ -1,0 +1,25 @@
+nav{
+    max-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    .menu_section{
+        cursor: default;
+        ul{
+            li{
+                height: 0;
+                visibility: hidden;
+                transition: all 0.5s ease-in-out;
+            }
+            
+        }
+        //&:hover,
+        &.openItem{
+            ul{
+                li{
+                    visibility: visible;
+                    height: 1.5rem;
+                }
+            }
+        }
+    }   
+}

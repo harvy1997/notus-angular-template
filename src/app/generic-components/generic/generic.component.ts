@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
+<<<<<<< Updated upstream
 import { ConfigTable, propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
 import { ConfigDropdown, typeTitle, typeMetod, typeUrl } from '../notus-dropdown/config/config-dropdowm';
 import { ConfigNavbar } from '../notus-navbar/config/config-notus-navbar';
 import { ConfigProfile, profileTypeBasic } from '../notus-profile/config/config-profile';
+=======
+import { ColorsRowStateOption, ColumnTable, ConfigTable, RowStateTable, RowTable } from '../notus-table/config/config-table';
+import { MenuModel } from '../slide-navbar/models';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-generic',
@@ -61,6 +66,7 @@ export class GenericComponent {
                             )
 
 
+<<<<<<< Updated upstream
   pru=()=>{
     console.log("prueba");
   }
@@ -115,4 +121,31 @@ export class GenericComponent {
     this.dataProfile.fechaCreacion
    )
 
+=======
+  configTable=new ConfigTable(  "Card Tables",
+                            "light",
+                            this.headers,
+                            [this.row1,
+                              this.row2,
+                              this.row3])
+
+  protected menuConfig:MenuModel[]=[
+    {imagen:"fa-solid fa-arrow-right",descripcion:"Admin cosito 1",hijos:[]},
+    {imagen:"fa-solid fa-arrow-left",descripcion:"Admin cosito 1",hijos:[]},
+    {imagen:"fa-solid fa-arrow-up",descripcion:"Admin cosito 1",hijos:[]},
+    {imagen:"fa-solid fa-arrow-down",descripcion:"Admin cosito 1",hijos:[]}
+   
+  ]
+  private createMenuConfig(){
+      this.menuConfig.forEach((menu,idx)=>{
+        for (let index = 0; index < 5; index++) {
+          this.menuConfig[idx].hijos.push({url:"/chucha/generic/"+idx,descripcion:`Cosito ${idx}_${index}`},)          
+          
+        }
+      })
+  }
+  constructor(){
+    this.createMenuConfig();
+  }
+>>>>>>> Stashed changes
 }
