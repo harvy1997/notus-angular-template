@@ -1,0 +1,24 @@
+<!-- <section [ngClass]="'grid md:grid-cols-2 grid-cols-1 lg:gap-x-4 gap-x-2 lg:grid-cols-'+gridLg" [formGroup]="_groupForm" >
+    <mat-form-field class="w-full" *ngFor="let fields of inputFields" appearance="outline">
+        <mat-label class="capitalize">{{fields.name ?? fields.key}}</mat-label>
+        <input matInput 
+            [placeholder]="fields.name ?? fields.key"
+            [formControlName]="fields.key" 
+            (change)="changeValue()"
+            [type]="fields.type+'' "
+            >
+        <mat-icon matSuffix>{{fields.icons}}</mat-icon>
+        <mat-error>{{getErrorMsg(fields.key)}}</mat-error>
+    </mat-form-field>    
+</section> -->
+<section [ngClass]="'grid md:grid-cols-2 grid-cols-1 lg:gap-x-4 gap-x-2 lg:grid-cols-'+gridLg" [formGroup]="_groupForm" >
+    <div class="relative w-full mb-2" *ngFor="let fields of inputFields">
+        <label class="block uppercase text-slate-600 text-xs font-bold mb-2" htmlFor="grid-password">
+            {{fields.name ?? fields.key}}
+        </label>
+        <input type="email"
+            class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+            [placeholder]="fields.name ?? fields.key" [formControlName]="fields.key" (change)="changeValue()"
+            [type]="fields.type+'' " />
+    </div>
+</section>

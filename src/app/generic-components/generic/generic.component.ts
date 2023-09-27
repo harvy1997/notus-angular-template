@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-<<<<<<< Updated upstream
-import { ConfigTable, propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
+import {  propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
 import { ConfigDropdown, typeTitle, typeMetod, typeUrl } from '../notus-dropdown/config/config-dropdowm';
 import { ConfigNavbar } from '../notus-navbar/config/config-notus-navbar';
 import { ConfigProfile, profileTypeBasic } from '../notus-profile/config/config-profile';
-=======
-import { ColorsRowStateOption, ColumnTable, ConfigTable, RowStateTable, RowTable } from '../notus-table/config/config-table';
+
 import { MenuModel } from '../slide-navbar/models';
->>>>>>> Stashed changes
+import { ConfigForm } from '../simple-input-form/config/configForm.type';
+import { InputField } from '../simple-input-form/config/inputField.type';
 
 @Component({
   selector: 'app-generic',
@@ -58,15 +57,7 @@ export class GenericComponent {
       Completion:"33%"
     },
   ]   
-  configTable=new ConfigTable("Card Tables",
-                              "light",
-                              "10",
-                              this.config,
-                              this.data,
-                            )
 
-
-<<<<<<< Updated upstream
   pru=()=>{
     console.log("prueba");
   }
@@ -121,13 +112,6 @@ export class GenericComponent {
     this.dataProfile.fechaCreacion
    )
 
-=======
-  configTable=new ConfigTable(  "Card Tables",
-                            "light",
-                            this.headers,
-                            [this.row1,
-                              this.row2,
-                              this.row3])
 
   protected menuConfig:MenuModel[]=[
     {imagen:"fa-solid fa-arrow-right",descripcion:"Admin cosito 1",hijos:[]},
@@ -144,8 +128,17 @@ export class GenericComponent {
         }
       })
   }
+  protected inputConfig:InputField[]=[
+    {key:"a",name:"holi",initialValue:"pp",validators:[]},
+    {key:"a",name:"holi",initialValue:"pp",validators:[]},
+    {key:"a",name:"holi",initialValue:"pp",validators:[]},
+    {key:"a",name:"holi",initialValue:"pp",validators:[]},
+    {key:"a",name:"holi",initialValue:"pp",validators:[]},
+  ]
   constructor(){
     this.createMenuConfig();
   }
->>>>>>> Stashed changes
+  inputFilds(event:any){
+    console.log(event)
+  }
 }

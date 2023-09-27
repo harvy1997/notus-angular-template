@@ -10,7 +10,7 @@
     </section>
     <section class="dark">
         <h3>Darken</h3>
-        <app-table [configTable]="configTable" [configDropdowm]="configDropdown"></app-table>
+        
     </section>
 </section>
 <section class="grid gap-4 grid-cols-4 p-4 overflow-hidden">
@@ -21,6 +21,11 @@
     <section class="dark">
         <generic-slide-navbar [data]="menuConfig" title="Miggo contable"></generic-slide-navbar>
     </section>
+</section>
+<section class="grid grid-cols-2 gap-4 bg-black">
+    <app-simple-input-form [Grid]="4" [Fields]="inputConfig" (result)="inputFilds($event)"/>
+    <app-simple-input-form [Grid]="3" [Fields]="inputConfig" (result)="inputFilds($event)"/>
+    <app-simple-input-form [Grid]="2" [Fields]="inputConfig" (result)="inputFilds($event)"/>
 </section>
 <section>
     <h2>navbar landing generic</h2>
