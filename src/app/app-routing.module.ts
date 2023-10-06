@@ -19,7 +19,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
-import { TableComponent } from './generic-components/notus-table/table.component';
+import { NotusTableComponent } from './generic-components/notus-table/notus-table.component';
 
 const routes: Routes = [
   // admin views
@@ -27,7 +27,7 @@ const routes: Routes = [
     path: "admin",
     component: AdminComponent,
     children: [
-      { path: "table-generic", component: TableComponent },
+      { path: "table-generic", component: NotusTableComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },

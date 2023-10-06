@@ -1,0 +1,23 @@
+<div class="grid grid-cols-6 gap-1">
+    <button class="bg-white active:bg-slate-50 text-slate-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" (click)="copyTable()"
+        type="button">
+        Copiar
+    </button>
+    <button class="bg-white active:bg-slate-50 text-slate-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" (click)="generateCSV()"
+        type="button">
+        CSV
+    </button>
+    <button class="bg-white active:bg-slate-50 text-slate-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" (click)="generateExcel()"
+        type="button">
+        Excel
+    </button>
+    <button class="bg-white active:bg-slate-50 text-slate-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" (click)="generatePDF()"
+        type="button" >
+        PDF
+    </button>
+    <button class="bg-white active:bg-slate-50 text-slate-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" (click)="openPrintPDF()"
+        type="button">
+        Imprimir
+    </button>
+    <app-notus-dropdown [config]="configDropdown"></app-notus-dropdown>
+</div>

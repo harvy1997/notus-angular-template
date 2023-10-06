@@ -22,7 +22,7 @@
         <generic-slide-navbar [data]="menuConfig" title="Miggo contable"></generic-slide-navbar>
     </section>
 </section>
-<section class="grid grid-cols-2 gap-4 bg-black">
+<section class="grid grid-cols-2 gap-4">
     <app-simple-input-form [Grid]="4" [Fields]="inputConfig" (result)="inputFilds($event)"/>
     <app-simple-input-form [Grid]="3" [Fields]="inputConfig" (result)="inputFilds($event)"/>
     <app-simple-input-form [Grid]="2" [Fields]="inputConfig" (result)="inputFilds($event)"/>
@@ -39,3 +39,17 @@
         <app-notus-profile [config]="configProfile" [edit]="false"></app-notus-profile>
     </section>
 </section>
+<section>
+    <h2>table</h2>
+    <section>
+        <app-notus-excel-export [configTable]="configTable"></app-notus-excel-export>
+        <app-notus-table [configTable]="configTable" [configDropdowm]="configDropdown"></app-notus-table>
+    </section>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

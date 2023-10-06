@@ -32,4 +32,9 @@ export class NotusDropdownComponent implements AfterViewInit {
       this.dropdownPopoverShow = true;
     }
   }
+  toggleCheck(option:any){
+    option.value=!option.value;
+    option.metod(option.optionText);
+  }
+
 }

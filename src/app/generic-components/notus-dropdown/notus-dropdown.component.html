@@ -3,7 +3,7 @@
   <i class="fas fa-ellipsis-v"></i>
 </a>
 <a *ngIf="config?.focusText!=null"
-  class="lg:text-white lg:hover:text-slate-200 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+  class="text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold {{config?.color}}"
   href="#miggo" (click)="toggleDropdown($event)" #btnDropdownRef>
   {{config?.focusText}}
 </a>
@@ -16,16 +16,20 @@
         <i *ngIf="option.icon!=null" class="{{option.icon}} leading-lg lg:text-slate-200 text-lg text-slate-400"></i>
         {{option.optionText}}
       </span>
-      <a *ngIf="option.url!=null && option.type!='title'" [routerLink]="[option.url]"
+      <a *ngIf="option.url!=null && option.type!='title' && option.type!='checkbox'" [routerLink]="[option.url]"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700 hover:bg-slate-200">
         <i *ngIf="option.icon!=null" class="{{option.icon}} leading-lg lg:text-slate-200 text-lg text-slate-400"></i>
         {{option.optionText}}
       </a>
-      <a *ngIf="option.metod!=null && option.type!='title'" (click)="option.metod()" 
+      <a *ngIf="option.metod!=null && option.type!='title' && option.type!='checkbox'" (click)="option.metod()" 
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700 cursor-pointer hover:bg-slate-200">
         <i *ngIf="option.icon!=null" class="{{option.icon}} leading-lg lg:text-slate-200 text-lg text-slate-400"></i>
         {{option.optionText}}
       </a>
+      <div *ngIf="option.metod!=null && option.type=='checkbox'" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700 cursor-pointer hover:bg-slate-200">
+        <input type="checkbox" [checked]="option.value" (change)="toggleCheck(option)"/>
+        {{option.optionText}}
+      </div>
     </div>
   </div>
 </div>

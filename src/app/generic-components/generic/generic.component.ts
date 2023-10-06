@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
+import {  ConfigTable, propertieImageGroup, propertieProgress, propertieState, propertieText, propertieTextAndImage } from '../notus-table/config/config-table';
 import { ConfigDropdown, typeTitle, typeMetod, typeUrl } from '../notus-dropdown/config/config-dropdowm';
 import { ConfigNavbar } from '../notus-navbar/config/config-notus-navbar';
 import { ConfigProfile, profileTypeBasic } from '../notus-profile/config/config-profile';
@@ -26,8 +26,9 @@ export class GenericComponent {
     ]    
   }
 
+  headersTable=["Project of god","Budget","Status","Users","Completion"]
   // creacion de headers
-  config={headers:["Project","Budget","Status","Users","Completion"],
+  config={headers:this.headersTable,
           properties:[propertieTextAndImage("Project","ProjectImg",true),
                       propertieText("Budget",false),
                       propertieState("Status","point",false),
@@ -61,13 +62,15 @@ export class GenericComponent {
   pru=()=>{
     console.log("prueba");
   }
-  configDropdown=new ConfigDropdown(null,[
+  configDropdown=new ConfigDropdown(null,"text-slate-700",[
                                     typeTitle("typeTitle"),
                                     typeMetod("typeMetod",this.pru,null),
                                     typeUrl("typeUrl",String.raw`/admin/tables`,null)
   ])
 
-  configDropdownNavbar=new ConfigDropdown("Navegacion",[
+  configTable=new ConfigTable("prueba","light","20",this.config,this.data);
+
+  configDropdownNavbar=new ConfigDropdown("Navegacion","text-slate-700",[
     typeTitle("Menu"),
     typeMetod("Facebook",this.pru,'fab fa-facebook'),
     typeMetod("Tweet",this.pru,'fab fa-twitter'),
@@ -135,6 +138,7 @@ export class GenericComponent {
     {key:"a",name:"holi",initialValue:"pp",validators:[]},
     {key:"a",name:"holi",initialValue:"pp",validators:[]},
   ]
+
   constructor(){
     this.createMenuConfig();
   }

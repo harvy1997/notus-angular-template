@@ -3,10 +3,10 @@ import { ConfigTable } from "./config/config-table";
 import { ConfigDropdown } from "../notus-dropdown/config/config-dropdowm";
 
 @Component({
-  selector: "app-table",
-  templateUrl: "./table.component.html",
+  selector: "app-notus-table",
+  templateUrl: "./notus-table.component.html",
 })
-export class TableComponent implements OnInit {
+export class NotusTableComponent implements OnInit {
   
   @Input()
   configTable:ConfigTable|null= null;
@@ -20,6 +20,12 @@ export class TableComponent implements OnInit {
   convertStringToNumber(value:string){
     const num = parseInt(value);
     return !isNaN(num)?num:0;
+  }
+  validateRender(idx:number){
+    if (this.configTable?.config && this.configTable?.config.headers) {
+      return this.configTable?.config.properties[idx].render;
+    }
+    return false;
   }
 
 }

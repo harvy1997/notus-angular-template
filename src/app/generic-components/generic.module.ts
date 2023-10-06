@@ -5,13 +5,14 @@ import { GenericRoutingModule } from './generic-routing.module';
 import { GenericComponent } from './generic/generic.component';
 
 import { SlideNavbarComponent } from './slide-navbar/slide-navbar.component';
-import { TableComponent } from './notus-table/table.component';
+import { NotusTableComponent } from './notus-table/notus-table.component';
 import { TableSimpleComponent } from './table-simple/table-simple.component';
 import { NotusDropdownComponent } from './notus-dropdown/notus-dropdown.component';
 import { NotusNavbarComponent } from './notus-navbar/notus-navbar.component';
 import { NotusProfileComponent } from './notus-profile/notus-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SimpleInputFormComponent } from './simple-input-form/simple-input-form.component';
+import { NotusExcelExportComponent } from './notus-excel-export/notus-excel-export.component';
 
 
 @NgModule({
@@ -19,11 +20,12 @@ import { SimpleInputFormComponent } from './simple-input-form/simple-input-form.
     GenericComponent,
     TableSimpleComponent,
     SlideNavbarComponent,
-    TableComponent,
+    NotusTableComponent,
     NotusDropdownComponent,
     NotusNavbarComponent,
     NotusProfileComponent,
-    SimpleInputFormComponent
+    SimpleInputFormComponent,
+    NotusExcelExportComponent
   ],
   imports: [
     CommonModule,
