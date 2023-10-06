@@ -6,8 +6,8 @@ import { PdfService } from "./services/PdfService";
 import { ClipBoardService } from "./services/ClipBoardService";
 
 @Component({
-  selector: "app-notus-excel-export",
-  templateUrl: "./notus-excel-export.component.html"
+  selector: "app-notus-export",
+  templateUrl: "./notus-export.component.html"
 })
 export class NotusExcelExportComponent implements OnInit {
 
@@ -44,6 +44,7 @@ export class NotusExcelExportComponent implements OnInit {
   }
 
   ajustarData() {
+    this.dataExport = [];
     if (this.configTable) {
       for (const object of this.configTable.data) {
         let element: any = {};

@@ -11,6 +11,8 @@ export class ClipBoardService {
             Object.keys(data[0]), // Cabeceras de la tabla
             ...tableBody, // Datos de la tabla
         ]
+        console.log(tabla);
+        
         const copy=await navigator.clipboard.writeText(tabla.join('\n'));
         //manejo errores
     }

@@ -12,7 +12,7 @@ import { NotusNavbarComponent } from './notus-navbar/notus-navbar.component';
 import { NotusProfileComponent } from './notus-profile/notus-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SimpleInputFormComponent } from './simple-input-form/simple-input-form.component';
-import { NotusExcelExportComponent } from './notus-excel-export/notus-excel-export.component';
+import { NotusExcelExportComponent } from './notus-excel-export/notus-export.component';
 
 
 @NgModule({
