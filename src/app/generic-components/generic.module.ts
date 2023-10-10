@@ -13,6 +13,7 @@ import { NotusProfileComponent } from './notus-profile/notus-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SimpleInputFormComponent } from './simple-input-form/simple-input-form.component';
 import { NotusExcelExportComponent } from './notus-excel-export/notus-export.component';
+import { NotusLoginComponent } from './notus-login/notus-login.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NotusExcelExportComponent } from './notus-excel-export/notus-export.com
     NotusNavbarComponent,
     NotusProfileComponent,
     SimpleInputFormComponent,
-    NotusExcelExportComponent
+    NotusExcelExportComponent,
+    NotusLoginComponent
   ],
   imports: [
     CommonModule,
